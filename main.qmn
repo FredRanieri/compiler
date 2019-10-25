@@ -1,0 +1,4 @@
+func(int b, float c) {
+    int resp = b + c;
+    return resp;
+}
