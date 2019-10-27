@@ -108,11 +108,14 @@ t_OPEN_CURLY_BRACKETS    =   r"\{"
 t_CLOSE_CURLY_BRACKETS   =   r"\}"
 
 
-#TODO: Inserir token para reconehcer "\n"
-
 def t_DIGIT(t):
     r'\d+'
-    return int(t.value)
+    try:
+        t.value = int(t.value)
+    except ValueError:
+        print("Integer value too large %d", t.value)
+        t.value = 0
+    return t
 
 def t_VARIABLE(t):
     r'[a-zA-Z_][a-zA-Z_0-9]*'
@@ -120,16 +123,20 @@ def t_VARIABLE(t):
         t.type = reserved_words[t.value]
     return t
 
-def t_EMPTY(t):
-    r'[ ]'
+def t_IGNORE(t):
+    r'[ \n\t]'
 
 def t_STRING(t):
     r'["][a-z A-Z_0-9]*["]'
     return t
 
 def t_CHARACTER(t):
-    r'[a-zA-Z_]'
+    r'[\'][a-zA-Z_][\']'
     return t
+
+def t_newline(t):
+    r'\n+'
+    t.lexer.lineno += t.value.count("\n")
 
 def t_error(t):
     print("Illegal character '%s'" % t.value[0])

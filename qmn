@@ -1,0 +1,9 @@
+#!/bin/sh
+
+case "$1" in
+    *)
+        python3 compiler.py $1
+        ;;
+esac
+
+exit 1

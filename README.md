@@ -13,7 +13,7 @@ sudo apt install python3-pip
 pip3 install ply
 ```
 
-Para compilar um arquivo:
+### Compilar um programa em qmn
 
 ```python3
 python3 compiler.py main.qmn

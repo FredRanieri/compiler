@@ -2,6 +2,7 @@
 
 import sys
 import myLexer
+import myGrammar
 
 extention = '.qmn'
 
@@ -14,10 +15,11 @@ def main():
         exit(1)
 
     with open(file_name, 'r') as file:
+        lines = file.readlines()
         token_table = myLexer.create_token_table(file.readlines())
 
-    for t in token_table:
-        print(t)
+        for line in lines:
+            myGrammar.result_parser(line)
 
 if __name__ == "__main__":
     main()
