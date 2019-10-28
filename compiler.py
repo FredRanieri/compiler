@@ -16,10 +16,11 @@ def main():
 
     with open(file_name, 'r') as file:
         lines = file.readlines()
-        token_table = myLexer.create_token_table(file.readlines())
+        token_table = myLexer.create_token_table(lines)
 
-        for line in lines:
-            myGrammar.result_parser(line)
+        for line in ''.join(lines).split(';'):
+            if len(line) != 0:
+                myGrammar.result_parser(line)
 
 if __name__ == "__main__":
     main()

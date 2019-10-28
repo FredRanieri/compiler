@@ -1,0 +1,749 @@
+Created by PLY version 3.11 (http://www.dabeaz.com/ply)
+
+Unused terminals:
+
+    AND
+    CHARACTER
+    CLOSE_CURLY_BRACKETS
+    CLOSE_SQUARE_BRACKETS
+    COLON
+    COMMA
+    DIFFERENT
+    ELIF
+    ELSE
+    EMPTY
+    EQUAL
+    FOR
+    FUNC
+    GREATER
+    GREATEROREQUAL
+    IF
+    LESS
+    LESSOREQUAL
+    NOT
+    OPEN_CURLY_BRACKETS
+    OPEN_SQUARE_BRACKETS
+    OR
+    PERIOD
+    RETURN
+    SEMICOLON
+    WHILE
+    WORD
+
+Grammar
+
+Rule 0     S' -> statement
+Rule 1     statement -> VARIABLE ASSINGMENT expression
+Rule 2     statement -> expression
+Rule 3     expression -> expression SUM expression
+Rule 4     expression -> expression SUBTRACTION expression
+Rule 5     expression -> expression MULTIPLICATION expression
+Rule 6     expression -> expression DIVISION expression
+Rule 7     expression -> OPEN_PARENTHESIS expression CLOSE_PARENTHESIS
+Rule 8     expression -> SCAN OPEN_PARENTHESIS VARIABLE CLOSE_PARENTHESIS
+Rule 9     expression -> PRINT OPEN_PARENTHESIS VARIABLE CLOSE_PARENTHESIS
+Rule 10    expression -> INT VARIABLE ASSINGMENT DIGIT
+Rule 11    expression -> FLOAT VARIABLE ASSINGMENT REAL
+Rule 12    expression -> STRING VARIABLE ASSINGMENT QUOTATION_MARKS VARIABLE QUOTATION_MARKS
+Rule 13    expression -> CHAR VARIABLE ASSINGMENT SINGLE_QUOTATION_MARK VARIABLE SINGLE_QUOTATION_MARK
+Rule 14    expression -> DIGIT
+Rule 15    expression -> REAL
+Rule 16    expression -> VARIABLE
+
+Terminals, with rules where they appear
+
+AND                  : 
+ASSINGMENT           : 1 10 11 12 13
+CHAR                 : 13
+CHARACTER            : 
+CLOSE_CURLY_BRACKETS : 
+CLOSE_PARENTHESIS    : 7 8 9
+CLOSE_SQUARE_BRACKETS : 
+COLON                : 
+COMMA                : 
+DIFFERENT            : 
+DIGIT                : 10 14
+DIVISION             : 6
+ELIF                 : 
+ELSE                 : 
+EMPTY                : 
+EQUAL                : 
+FLOAT                : 11
+FOR                  : 
+FUNC                 : 
+GREATER              : 
+GREATEROREQUAL       : 
+IF                   : 
+INT                  : 10
+LESS                 : 
+LESSOREQUAL          : 
+MULTIPLICATION       : 5
+NOT                  : 
+OPEN_CURLY_BRACKETS  : 
+OPEN_PARENTHESIS     : 7 8 9
+OPEN_SQUARE_BRACKETS : 
+OR                   : 
+PERIOD               : 
+PRINT                : 9
+QUOTATION_MARKS      : 12 12
+REAL                 : 11 15
+RETURN               : 
+SCAN                 : 8
+SEMICOLON            : 
+SINGLE_QUOTATION_MARK : 13 13
+STRING               : 12
+SUBTRACTION          : 4
+SUM                  : 3
+VARIABLE             : 1 8 9 10 11 12 12 13 13 16
+WHILE                : 
+WORD                 : 
+error                : 
+
+Nonterminals, with rules where they appear
+
+expression           : 1 2 3 3 4 4 5 5 6 6 7
+statement            : 0
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . statement
+    (1) statement -> . VARIABLE ASSINGMENT expression
+    (2) statement -> . expression
+    (3) expression -> . expression SUM expression
+    (4) expression -> . expression SUBTRACTION expression
+    (5) expression -> . expression MULTIPLICATION expression
+    (6) expression -> . expression DIVISION expression
+    (7) expression -> . OPEN_PARENTHESIS expression CLOSE_PARENTHESIS
+    (8) expression -> . SCAN OPEN_PARENTHESIS VARIABLE CLOSE_PARENTHESIS
+    (9) expression -> . PRINT OPEN_PARENTHESIS VARIABLE CLOSE_PARENTHESIS
+    (10) expression -> . INT VARIABLE ASSINGMENT DIGIT
+    (11) expression -> . FLOAT VARIABLE ASSINGMENT REAL
+    (12) expression -> . STRING VARIABLE ASSINGMENT QUOTATION_MARKS VARIABLE QUOTATION_MARKS
+    (13) expression -> . CHAR VARIABLE ASSINGMENT SINGLE_QUOTATION_MARK VARIABLE SINGLE_QUOTATION_MARK
+    (14) expression -> . DIGIT
+    (15) expression -> . REAL
+    (16) expression -> . VARIABLE
+
+    VARIABLE        shift and go to state 2
+    OPEN_PARENTHESIS shift and go to state 4
+    SCAN            shift and go to state 5
+    PRINT           shift and go to state 6
+    INT             shift and go to state 7
+    FLOAT           shift and go to state 9
+    STRING          shift and go to state 11
+    CHAR            shift and go to state 12
+    DIGIT           shift and go to state 8
+    REAL            shift and go to state 10
+
+    statement                      shift and go to state 1
+    expression                     shift and go to state 3
+
+state 1
+
+    (0) S' -> statement .
+
+
+
+state 2
+
+    (1) statement -> VARIABLE . ASSINGMENT expression
+    (16) expression -> VARIABLE .
+
+    ASSINGMENT      shift and go to state 13
+    SUM             reduce using rule 16 (expression -> VARIABLE .)
+    SUBTRACTION     reduce using rule 16 (expression -> VARIABLE .)
+    MULTIPLICATION  reduce using rule 16 (expression -> VARIABLE .)
+    DIVISION        reduce using rule 16 (expression -> VARIABLE .)
+    $end            reduce using rule 16 (expression -> VARIABLE .)
+
+
+state 3
+
+    (2) statement -> expression .
+    (3) expression -> expression . SUM expression
+    (4) expression -> expression . SUBTRACTION expression
+    (5) expression -> expression . MULTIPLICATION expression
+    (6) expression -> expression . DIVISION expression
+
+    $end            reduce using rule 2 (statement -> expression .)
+    SUM             shift and go to state 14
+    SUBTRACTION     shift and go to state 15
+    MULTIPLICATION  shift and go to state 16
+    DIVISION        shift and go to state 17
+
+
+state 4
+
+    (7) expression -> OPEN_PARENTHESIS . expression CLOSE_PARENTHESIS
+    (3) expression -> . expression SUM expression
+    (4) expression -> . expression SUBTRACTION expression
+    (5) expression -> . expression MULTIPLICATION expression
+    (6) expression -> . expression DIVISION expression
+    (7) expression -> . OPEN_PARENTHESIS expression CLOSE_PARENTHESIS
+    (8) expression -> . SCAN OPEN_PARENTHESIS VARIABLE CLOSE_PARENTHESIS
+    (9) expression -> . PRINT OPEN_PARENTHESIS VARIABLE CLOSE_PARENTHESIS
+    (10) expression -> . INT VARIABLE ASSINGMENT DIGIT
+    (11) expression -> . FLOAT VARIABLE ASSINGMENT REAL
+    (12) expression -> . STRING VARIABLE ASSINGMENT QUOTATION_MARKS VARIABLE QUOTATION_MARKS
+    (13) expression -> . CHAR VARIABLE ASSINGMENT SINGLE_QUOTATION_MARK VARIABLE SINGLE_QUOTATION_MARK
+    (14) expression -> . DIGIT
+    (15) expression -> . REAL
+    (16) expression -> . VARIABLE
+
+    OPEN_PARENTHESIS shift and go to state 4
+    SCAN            shift and go to state 5
+    PRINT           shift and go to state 6
+    INT             shift and go to state 7
+    FLOAT           shift and go to state 9
+    STRING          shift and go to state 11
+    CHAR            shift and go to state 12
+    DIGIT           shift and go to state 8
+    REAL            shift and go to state 10
+    VARIABLE        shift and go to state 19
+
+    expression                     shift and go to state 18
+
+state 5
+
+    (8) expression -> SCAN . OPEN_PARENTHESIS VARIABLE CLOSE_PARENTHESIS
+
+    OPEN_PARENTHESIS shift and go to state 20
+
+
+state 6
+
+    (9) expression -> PRINT . OPEN_PARENTHESIS VARIABLE CLOSE_PARENTHESIS
+
+    OPEN_PARENTHESIS shift and go to state 21
+
+
+state 7
+
+    (10) expression -> INT . VARIABLE ASSINGMENT DIGIT
+
+    VARIABLE        shift and go to state 22
+
+
+state 8
+
+    (14) expression -> DIGIT .
+
+    SUM             reduce using rule 14 (expression -> DIGIT .)
+    SUBTRACTION     reduce using rule 14 (expression -> DIGIT .)
+    MULTIPLICATION  reduce using rule 14 (expression -> DIGIT .)
+    DIVISION        reduce using rule 14 (expression -> DIGIT .)
+    $end            reduce using rule 14 (expression -> DIGIT .)
+    CLOSE_PARENTHESIS reduce using rule 14 (expression -> DIGIT .)
+
+
+state 9
+
+    (11) expression -> FLOAT . VARIABLE ASSINGMENT REAL
+
+    VARIABLE        shift and go to state 23
+
+
+state 10
+
+    (15) expression -> REAL .
+
+    SUM             reduce using rule 15 (expression -> REAL .)
+    SUBTRACTION     reduce using rule 15 (expression -> REAL .)
+    MULTIPLICATION  reduce using rule 15 (expression -> REAL .)
+    DIVISION        reduce using rule 15 (expression -> REAL .)
+    $end            reduce using rule 15 (expression -> REAL .)
+    CLOSE_PARENTHESIS reduce using rule 15 (expression -> REAL .)
+
+
+state 11
+
+    (12) expression -> STRING . VARIABLE ASSINGMENT QUOTATION_MARKS VARIABLE QUOTATION_MARKS
+
+    VARIABLE        shift and go to state 24
+
+
+state 12
+
+    (13) expression -> CHAR . VARIABLE ASSINGMENT SINGLE_QUOTATION_MARK VARIABLE SINGLE_QUOTATION_MARK
+
+    VARIABLE        shift and go to state 25
+
+
+state 13
+
+    (1) statement -> VARIABLE ASSINGMENT . expression
+    (3) expression -> . expression SUM expression
+    (4) expression -> . expression SUBTRACTION expression
+    (5) expression -> . expression MULTIPLICATION expression
+    (6) expression -> . expression DIVISION expression
+    (7) expression -> . OPEN_PARENTHESIS expression CLOSE_PARENTHESIS
+    (8) expression -> . SCAN OPEN_PARENTHESIS VARIABLE CLOSE_PARENTHESIS
+    (9) expression -> . PRINT OPEN_PARENTHESIS VARIABLE CLOSE_PARENTHESIS
+    (10) expression -> . INT VARIABLE ASSINGMENT DIGIT
+    (11) expression -> . FLOAT VARIABLE ASSINGMENT REAL
+    (12) expression -> . STRING VARIABLE ASSINGMENT QUOTATION_MARKS VARIABLE QUOTATION_MARKS
+    (13) expression -> . CHAR VARIABLE ASSINGMENT SINGLE_QUOTATION_MARK VARIABLE SINGLE_QUOTATION_MARK
+    (14) expression -> . DIGIT
+    (15) expression -> . REAL
+    (16) expression -> . VARIABLE
+
+    OPEN_PARENTHESIS shift and go to state 4
+    SCAN            shift and go to state 5
+    PRINT           shift and go to state 6
+    INT             shift and go to state 7
+    FLOAT           shift and go to state 9
+    STRING          shift and go to state 11
+    CHAR            shift and go to state 12
+    DIGIT           shift and go to state 8
+    REAL            shift and go to state 10
+    VARIABLE        shift and go to state 19
+
+    expression                     shift and go to state 26
+
+state 14
+
+    (3) expression -> expression SUM . expression
+    (3) expression -> . expression SUM expression
+    (4) expression -> . expression SUBTRACTION expression
+    (5) expression -> . expression MULTIPLICATION expression
+    (6) expression -> . expression DIVISION expression
+    (7) expression -> . OPEN_PARENTHESIS expression CLOSE_PARENTHESIS
+    (8) expression -> . SCAN OPEN_PARENTHESIS VARIABLE CLOSE_PARENTHESIS
+    (9) expression -> . PRINT OPEN_PARENTHESIS VARIABLE CLOSE_PARENTHESIS
+    (10) expression -> . INT VARIABLE ASSINGMENT DIGIT
+    (11) expression -> . FLOAT VARIABLE ASSINGMENT REAL
+    (12) expression -> . STRING VARIABLE ASSINGMENT QUOTATION_MARKS VARIABLE QUOTATION_MARKS
+    (13) expression -> . CHAR VARIABLE ASSINGMENT SINGLE_QUOTATION_MARK VARIABLE SINGLE_QUOTATION_MARK
+    (14) expression -> . DIGIT
+    (15) expression -> . REAL
+    (16) expression -> . VARIABLE
+
+    OPEN_PARENTHESIS shift and go to state 4
+    SCAN            shift and go to state 5
+    PRINT           shift and go to state 6
+    INT             shift and go to state 7
+    FLOAT           shift and go to state 9
+    STRING          shift and go to state 11
+    CHAR            shift and go to state 12
+    DIGIT           shift and go to state 8
+    REAL            shift and go to state 10
+    VARIABLE        shift and go to state 19
+
+    expression                     shift and go to state 27
+
+state 15
+
+    (4) expression -> expression SUBTRACTION . expression
+    (3) expression -> . expression SUM expression
+    (4) expression -> . expression SUBTRACTION expression
+    (5) expression -> . expression MULTIPLICATION expression
+    (6) expression -> . expression DIVISION expression
+    (7) expression -> . OPEN_PARENTHESIS expression CLOSE_PARENTHESIS
+    (8) expression -> . SCAN OPEN_PARENTHESIS VARIABLE CLOSE_PARENTHESIS
+    (9) expression -> . PRINT OPEN_PARENTHESIS VARIABLE CLOSE_PARENTHESIS
+    (10) expression -> . INT VARIABLE ASSINGMENT DIGIT
+    (11) expression -> . FLOAT VARIABLE ASSINGMENT REAL
+    (12) expression -> . STRING VARIABLE ASSINGMENT QUOTATION_MARKS VARIABLE QUOTATION_MARKS
+    (13) expression -> . CHAR VARIABLE ASSINGMENT SINGLE_QUOTATION_MARK VARIABLE SINGLE_QUOTATION_MARK
+    (14) expression -> . DIGIT
+    (15) expression -> . REAL
+    (16) expression -> . VARIABLE
+
+    OPEN_PARENTHESIS shift and go to state 4
+    SCAN            shift and go to state 5
+    PRINT           shift and go to state 6
+    INT             shift and go to state 7
+    FLOAT           shift and go to state 9
+    STRING          shift and go to state 11
+    CHAR            shift and go to state 12
+    DIGIT           shift and go to state 8
+    REAL            shift and go to state 10
+    VARIABLE        shift and go to state 19
+
+    expression                     shift and go to state 28
+
+state 16
+
+    (5) expression -> expression MULTIPLICATION . expression
+    (3) expression -> . expression SUM expression
+    (4) expression -> . expression SUBTRACTION expression
+    (5) expression -> . expression MULTIPLICATION expression
+    (6) expression -> . expression DIVISION expression
+    (7) expression -> . OPEN_PARENTHESIS expression CLOSE_PARENTHESIS
+    (8) expression -> . SCAN OPEN_PARENTHESIS VARIABLE CLOSE_PARENTHESIS
+    (9) expression -> . PRINT OPEN_PARENTHESIS VARIABLE CLOSE_PARENTHESIS
+    (10) expression -> . INT VARIABLE ASSINGMENT DIGIT
+    (11) expression -> . FLOAT VARIABLE ASSINGMENT REAL
+    (12) expression -> . STRING VARIABLE ASSINGMENT QUOTATION_MARKS VARIABLE QUOTATION_MARKS
+    (13) expression -> . CHAR VARIABLE ASSINGMENT SINGLE_QUOTATION_MARK VARIABLE SINGLE_QUOTATION_MARK
+    (14) expression -> . DIGIT
+    (15) expression -> . REAL
+    (16) expression -> . VARIABLE
+
+    OPEN_PARENTHESIS shift and go to state 4
+    SCAN            shift and go to state 5
+    PRINT           shift and go to state 6
+    INT             shift and go to state 7
+    FLOAT           shift and go to state 9
+    STRING          shift and go to state 11
+    CHAR            shift and go to state 12
+    DIGIT           shift and go to state 8
+    REAL            shift and go to state 10
+    VARIABLE        shift and go to state 19
+
+    expression                     shift and go to state 29
+
+state 17
+
+    (6) expression -> expression DIVISION . expression
+    (3) expression -> . expression SUM expression
+    (4) expression -> . expression SUBTRACTION expression
+    (5) expression -> . expression MULTIPLICATION expression
+    (6) expression -> . expression DIVISION expression
+    (7) expression -> . OPEN_PARENTHESIS expression CLOSE_PARENTHESIS
+    (8) expression -> . SCAN OPEN_PARENTHESIS VARIABLE CLOSE_PARENTHESIS
+    (9) expression -> . PRINT OPEN_PARENTHESIS VARIABLE CLOSE_PARENTHESIS
+    (10) expression -> . INT VARIABLE ASSINGMENT DIGIT
+    (11) expression -> . FLOAT VARIABLE ASSINGMENT REAL
+    (12) expression -> . STRING VARIABLE ASSINGMENT QUOTATION_MARKS VARIABLE QUOTATION_MARKS
+    (13) expression -> . CHAR VARIABLE ASSINGMENT SINGLE_QUOTATION_MARK VARIABLE SINGLE_QUOTATION_MARK
+    (14) expression -> . DIGIT
+    (15) expression -> . REAL
+    (16) expression -> . VARIABLE
+
+    OPEN_PARENTHESIS shift and go to state 4
+    SCAN            shift and go to state 5
+    PRINT           shift and go to state 6
+    INT             shift and go to state 7
+    FLOAT           shift and go to state 9
+    STRING          shift and go to state 11
+    CHAR            shift and go to state 12
+    DIGIT           shift and go to state 8
+    REAL            shift and go to state 10
+    VARIABLE        shift and go to state 19
+
+    expression                     shift and go to state 30
+
+state 18
+
+    (7) expression -> OPEN_PARENTHESIS expression . CLOSE_PARENTHESIS
+    (3) expression -> expression . SUM expression
+    (4) expression -> expression . SUBTRACTION expression
+    (5) expression -> expression . MULTIPLICATION expression
+    (6) expression -> expression . DIVISION expression
+
+    CLOSE_PARENTHESIS shift and go to state 31
+    SUM             shift and go to state 14
+    SUBTRACTION     shift and go to state 15
+    MULTIPLICATION  shift and go to state 16
+    DIVISION        shift and go to state 17
+
+
+state 19
+
+    (16) expression -> VARIABLE .
+
+    CLOSE_PARENTHESIS reduce using rule 16 (expression -> VARIABLE .)
+    SUM             reduce using rule 16 (expression -> VARIABLE .)
+    SUBTRACTION     reduce using rule 16 (expression -> VARIABLE .)
+    MULTIPLICATION  reduce using rule 16 (expression -> VARIABLE .)
+    DIVISION        reduce using rule 16 (expression -> VARIABLE .)
+    $end            reduce using rule 16 (expression -> VARIABLE .)
+
+
+state 20
+
+    (8) expression -> SCAN OPEN_PARENTHESIS . VARIABLE CLOSE_PARENTHESIS
+
+    VARIABLE        shift and go to state 32
+
+
+state 21
+
+    (9) expression -> PRINT OPEN_PARENTHESIS . VARIABLE CLOSE_PARENTHESIS
+
+    VARIABLE        shift and go to state 33
+
+
+state 22
+
+    (10) expression -> INT VARIABLE . ASSINGMENT DIGIT
+
+    ASSINGMENT      shift and go to state 34
+
+
+state 23
+
+    (11) expression -> FLOAT VARIABLE . ASSINGMENT REAL
+
+    ASSINGMENT      shift and go to state 35
+
+
+state 24
+
+    (12) expression -> STRING VARIABLE . ASSINGMENT QUOTATION_MARKS VARIABLE QUOTATION_MARKS
+
+    ASSINGMENT      shift and go to state 36
+
+
+state 25
+
+    (13) expression -> CHAR VARIABLE . ASSINGMENT SINGLE_QUOTATION_MARK VARIABLE SINGLE_QUOTATION_MARK
+
+    ASSINGMENT      shift and go to state 37
+
+
+state 26
+
+    (1) statement -> VARIABLE ASSINGMENT expression .
+    (3) expression -> expression . SUM expression
+    (4) expression -> expression . SUBTRACTION expression
+    (5) expression -> expression . MULTIPLICATION expression
+    (6) expression -> expression . DIVISION expression
+
+    $end            reduce using rule 1 (statement -> VARIABLE ASSINGMENT expression .)
+    SUM             shift and go to state 14
+    SUBTRACTION     shift and go to state 15
+    MULTIPLICATION  shift and go to state 16
+    DIVISION        shift and go to state 17
+
+
+state 27
+
+    (3) expression -> expression SUM expression .
+    (3) expression -> expression . SUM expression
+    (4) expression -> expression . SUBTRACTION expression
+    (5) expression -> expression . MULTIPLICATION expression
+    (6) expression -> expression . DIVISION expression
+
+    SUM             reduce using rule 3 (expression -> expression SUM expression .)
+    SUBTRACTION     reduce using rule 3 (expression -> expression SUM expression .)
+    $end            reduce using rule 3 (expression -> expression SUM expression .)
+    CLOSE_PARENTHESIS reduce using rule 3 (expression -> expression SUM expression .)
+    MULTIPLICATION  shift and go to state 16
+    DIVISION        shift and go to state 17
+
+  ! MULTIPLICATION  [ reduce using rule 3 (expression -> expression SUM expression .) ]
+  ! DIVISION        [ reduce using rule 3 (expression -> expression SUM expression .) ]
+  ! SUM             [ shift and go to state 14 ]
+  ! SUBTRACTION     [ shift and go to state 15 ]
+
+
+state 28
+
+    (4) expression -> expression SUBTRACTION expression .
+    (3) expression -> expression . SUM expression
+    (4) expression -> expression . SUBTRACTION expression
+    (5) expression -> expression . MULTIPLICATION expression
+    (6) expression -> expression . DIVISION expression
+
+    SUM             reduce using rule 4 (expression -> expression SUBTRACTION expression .)
+    SUBTRACTION     reduce using rule 4 (expression -> expression SUBTRACTION expression .)
+    $end            reduce using rule 4 (expression -> expression SUBTRACTION expression .)
+    CLOSE_PARENTHESIS reduce using rule 4 (expression -> expression SUBTRACTION expression .)
+    MULTIPLICATION  shift and go to state 16
+    DIVISION        shift and go to state 17
+
+  ! MULTIPLICATION  [ reduce using rule 4 (expression -> expression SUBTRACTION expression .) ]
+  ! DIVISION        [ reduce using rule 4 (expression -> expression SUBTRACTION expression .) ]
+  ! SUM             [ shift and go to state 14 ]
+  ! SUBTRACTION     [ shift and go to state 15 ]
+
+
+state 29
+
+    (5) expression -> expression MULTIPLICATION expression .
+    (3) expression -> expression . SUM expression
+    (4) expression -> expression . SUBTRACTION expression
+    (5) expression -> expression . MULTIPLICATION expression
+    (6) expression -> expression . DIVISION expression
+
+    SUM             reduce using rule 5 (expression -> expression MULTIPLICATION expression .)
+    SUBTRACTION     reduce using rule 5 (expression -> expression MULTIPLICATION expression .)
+    MULTIPLICATION  reduce using rule 5 (expression -> expression MULTIPLICATION expression .)
+    DIVISION        reduce using rule 5 (expression -> expression MULTIPLICATION expression .)
+    $end            reduce using rule 5 (expression -> expression MULTIPLICATION expression .)
+    CLOSE_PARENTHESIS reduce using rule 5 (expression -> expression MULTIPLICATION expression .)
+
+  ! SUM             [ shift and go to state 14 ]
+  ! SUBTRACTION     [ shift and go to state 15 ]
+  ! MULTIPLICATION  [ shift and go to state 16 ]
+  ! DIVISION        [ shift and go to state 17 ]
+
+
+state 30
+
+    (6) expression -> expression DIVISION expression .
+    (3) expression -> expression . SUM expression
+    (4) expression -> expression . SUBTRACTION expression
+    (5) expression -> expression . MULTIPLICATION expression
+    (6) expression -> expression . DIVISION expression
+
+    SUM             reduce using rule 6 (expression -> expression DIVISION expression .)
+    SUBTRACTION     reduce using rule 6 (expression -> expression DIVISION expression .)
+    MULTIPLICATION  reduce using rule 6 (expression -> expression DIVISION expression .)
+    DIVISION        reduce using rule 6 (expression -> expression DIVISION expression .)
+    $end            reduce using rule 6 (expression -> expression DIVISION expression .)
+    CLOSE_PARENTHESIS reduce using rule 6 (expression -> expression DIVISION expression .)
+
+  ! SUM             [ shift and go to state 14 ]
+  ! SUBTRACTION     [ shift and go to state 15 ]
+  ! MULTIPLICATION  [ shift and go to state 16 ]
+  ! DIVISION        [ shift and go to state 17 ]
+
+
+state 31
+
+    (7) expression -> OPEN_PARENTHESIS expression CLOSE_PARENTHESIS .
+
+    SUM             reduce using rule 7 (expression -> OPEN_PARENTHESIS expression CLOSE_PARENTHESIS .)
+    SUBTRACTION     reduce using rule 7 (expression -> OPEN_PARENTHESIS expression CLOSE_PARENTHESIS .)
+    MULTIPLICATION  reduce using rule 7 (expression -> OPEN_PARENTHESIS expression CLOSE_PARENTHESIS .)
+    DIVISION        reduce using rule 7 (expression -> OPEN_PARENTHESIS expression CLOSE_PARENTHESIS .)
+    $end            reduce using rule 7 (expression -> OPEN_PARENTHESIS expression CLOSE_PARENTHESIS .)
+    CLOSE_PARENTHESIS reduce using rule 7 (expression -> OPEN_PARENTHESIS expression CLOSE_PARENTHESIS .)
+
+
+state 32
+
+    (8) expression -> SCAN OPEN_PARENTHESIS VARIABLE . CLOSE_PARENTHESIS
+
+    CLOSE_PARENTHESIS shift and go to state 38
+
+
+state 33
+
+    (9) expression -> PRINT OPEN_PARENTHESIS VARIABLE . CLOSE_PARENTHESIS
+
+    CLOSE_PARENTHESIS shift and go to state 39
+
+
+state 34
+
+    (10) expression -> INT VARIABLE ASSINGMENT . DIGIT
+
+    DIGIT           shift and go to state 40
+
+
+state 35
+
+    (11) expression -> FLOAT VARIABLE ASSINGMENT . REAL
+
+    REAL            shift and go to state 41
+
+
+state 36
+
+    (12) expression -> STRING VARIABLE ASSINGMENT . QUOTATION_MARKS VARIABLE QUOTATION_MARKS
+
+    QUOTATION_MARKS shift and go to state 42
+
+
+state 37
+
+    (13) expression -> CHAR VARIABLE ASSINGMENT . SINGLE_QUOTATION_MARK VARIABLE SINGLE_QUOTATION_MARK
+
+    SINGLE_QUOTATION_MARK shift and go to state 43
+
+
+state 38
+
+    (8) expression -> SCAN OPEN_PARENTHESIS VARIABLE CLOSE_PARENTHESIS .
+
+    SUM             reduce using rule 8 (expression -> SCAN OPEN_PARENTHESIS VARIABLE CLOSE_PARENTHESIS .)
+    SUBTRACTION     reduce using rule 8 (expression -> SCAN OPEN_PARENTHESIS VARIABLE CLOSE_PARENTHESIS .)
+    MULTIPLICATION  reduce using rule 8 (expression -> SCAN OPEN_PARENTHESIS VARIABLE CLOSE_PARENTHESIS .)
+    DIVISION        reduce using rule 8 (expression -> SCAN OPEN_PARENTHESIS VARIABLE CLOSE_PARENTHESIS .)
+    $end            reduce using rule 8 (expression -> SCAN OPEN_PARENTHESIS VARIABLE CLOSE_PARENTHESIS .)
+    CLOSE_PARENTHESIS reduce using rule 8 (expression -> SCAN OPEN_PARENTHESIS VARIABLE CLOSE_PARENTHESIS .)
+
+
+state 39
+
+    (9) expression -> PRINT OPEN_PARENTHESIS VARIABLE CLOSE_PARENTHESIS .
+
+    SUM             reduce using rule 9 (expression -> PRINT OPEN_PARENTHESIS VARIABLE CLOSE_PARENTHESIS .)
+    SUBTRACTION     reduce using rule 9 (expression -> PRINT OPEN_PARENTHESIS VARIABLE CLOSE_PARENTHESIS .)
+    MULTIPLICATION  reduce using rule 9 (expression -> PRINT OPEN_PARENTHESIS VARIABLE CLOSE_PARENTHESIS .)
+    DIVISION        reduce using rule 9 (expression -> PRINT OPEN_PARENTHESIS VARIABLE CLOSE_PARENTHESIS .)
+    $end            reduce using rule 9 (expression -> PRINT OPEN_PARENTHESIS VARIABLE CLOSE_PARENTHESIS .)
+    CLOSE_PARENTHESIS reduce using rule 9 (expression -> PRINT OPEN_PARENTHESIS VARIABLE CLOSE_PARENTHESIS .)
+
+
+state 40
+
+    (10) expression -> INT VARIABLE ASSINGMENT DIGIT .
+
+    SUM             reduce using rule 10 (expression -> INT VARIABLE ASSINGMENT DIGIT .)
+    SUBTRACTION     reduce using rule 10 (expression -> INT VARIABLE ASSINGMENT DIGIT .)
+    MULTIPLICATION  reduce using rule 10 (expression -> INT VARIABLE ASSINGMENT DIGIT .)
+    DIVISION        reduce using rule 10 (expression -> INT VARIABLE ASSINGMENT DIGIT .)
+    $end            reduce using rule 10 (expression -> INT VARIABLE ASSINGMENT DIGIT .)
+    CLOSE_PARENTHESIS reduce using rule 10 (expression -> INT VARIABLE ASSINGMENT DIGIT .)
+
+
+state 41
+
+    (11) expression -> FLOAT VARIABLE ASSINGMENT REAL .
+
+    SUM             reduce using rule 11 (expression -> FLOAT VARIABLE ASSINGMENT REAL .)
+    SUBTRACTION     reduce using rule 11 (expression -> FLOAT VARIABLE ASSINGMENT REAL .)
+    MULTIPLICATION  reduce using rule 11 (expression -> FLOAT VARIABLE ASSINGMENT REAL .)
+    DIVISION        reduce using rule 11 (expression -> FLOAT VARIABLE ASSINGMENT REAL .)
+    $end            reduce using rule 11 (expression -> FLOAT VARIABLE ASSINGMENT REAL .)
+    CLOSE_PARENTHESIS reduce using rule 11 (expression -> FLOAT VARIABLE ASSINGMENT REAL .)
+
+
+state 42
+
+    (12) expression -> STRING VARIABLE ASSINGMENT QUOTATION_MARKS . VARIABLE QUOTATION_MARKS
+
+    VARIABLE        shift and go to state 44
+
+
+state 43
+
+    (13) expression -> CHAR VARIABLE ASSINGMENT SINGLE_QUOTATION_MARK . VARIABLE SINGLE_QUOTATION_MARK
+
+    VARIABLE        shift and go to state 45
+
+
+state 44
+
+    (12) expression -> STRING VARIABLE ASSINGMENT QUOTATION_MARKS VARIABLE . QUOTATION_MARKS
+
+    QUOTATION_MARKS shift and go to state 46
+
+
+state 45
+
+    (13) expression -> CHAR VARIABLE ASSINGMENT SINGLE_QUOTATION_MARK VARIABLE . SINGLE_QUOTATION_MARK
+
+    SINGLE_QUOTATION_MARK shift and go to state 47
+
+
+state 46
+
+    (12) expression -> STRING VARIABLE ASSINGMENT QUOTATION_MARKS VARIABLE QUOTATION_MARKS .
+
+    SUM             reduce using rule 12 (expression -> STRING VARIABLE ASSINGMENT QUOTATION_MARKS VARIABLE QUOTATION_MARKS .)
+    SUBTRACTION     reduce using rule 12 (expression -> STRING VARIABLE ASSINGMENT QUOTATION_MARKS VARIABLE QUOTATION_MARKS .)
+    MULTIPLICATION  reduce using rule 12 (expression -> STRING VARIABLE ASSINGMENT QUOTATION_MARKS VARIABLE QUOTATION_MARKS .)
+    DIVISION        reduce using rule 12 (expression -> STRING VARIABLE ASSINGMENT QUOTATION_MARKS VARIABLE QUOTATION_MARKS .)
+    $end            reduce using rule 12 (expression -> STRING VARIABLE ASSINGMENT QUOTATION_MARKS VARIABLE QUOTATION_MARKS .)
+    CLOSE_PARENTHESIS reduce using rule 12 (expression -> STRING VARIABLE ASSINGMENT QUOTATION_MARKS VARIABLE QUOTATION_MARKS .)
+
+
+state 47
+
+    (13) expression -> CHAR VARIABLE ASSINGMENT SINGLE_QUOTATION_MARK VARIABLE SINGLE_QUOTATION_MARK .
+
+    SUM             reduce using rule 13 (expression -> CHAR VARIABLE ASSINGMENT SINGLE_QUOTATION_MARK VARIABLE SINGLE_QUOTATION_MARK .)
+    SUBTRACTION     reduce using rule 13 (expression -> CHAR VARIABLE ASSINGMENT SINGLE_QUOTATION_MARK VARIABLE SINGLE_QUOTATION_MARK .)
+    MULTIPLICATION  reduce using rule 13 (expression -> CHAR VARIABLE ASSINGMENT SINGLE_QUOTATION_MARK VARIABLE SINGLE_QUOTATION_MARK .)
+    DIVISION        reduce using rule 13 (expression -> CHAR VARIABLE ASSINGMENT SINGLE_QUOTATION_MARK VARIABLE SINGLE_QUOTATION_MARK .)
+    $end            reduce using rule 13 (expression -> CHAR VARIABLE ASSINGMENT SINGLE_QUOTATION_MARK VARIABLE SINGLE_QUOTATION_MARK .)
+    CLOSE_PARENTHESIS reduce using rule 13 (expression -> CHAR VARIABLE ASSINGMENT SINGLE_QUOTATION_MARK VARIABLE SINGLE_QUOTATION_MARK .)
+

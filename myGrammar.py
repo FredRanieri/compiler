@@ -18,7 +18,6 @@ def p_statement_assign(t):
 
 def p_statement_expr(t):
     'statement : expression'
-    print(t[1])
 
 def p_expression_binop(t):
     '''expression : expression SUM expression
@@ -40,8 +39,36 @@ def p_expression_group(t):
     'expression : OPEN_PARENTHESIS expression CLOSE_PARENTHESIS'
     t[0] = t[2]
 
+def p_expression_scan(t):
+    'expression : SCAN OPEN_PARENTHESIS VARIABLE CLOSE_PARENTHESIS'
+    variables[t[3]] = input()
+
+def p_expression_print(t):
+    'expression : PRINT OPEN_PARENTHESIS VARIABLE CLOSE_PARENTHESIS'
+    print(variables[t[3]])
+
+def p_expression_int(t):
+    'expression : INT VARIABLE ASSINGMENT DIGIT'
+    variables[t[2]] = int(t[4])
+
+def p_expression_float(t):
+    'expression : FLOAT VARIABLE ASSINGMENT REAL'
+    variables[t[2]] = float(t[4])
+
+def p_expression_string(t):
+    'expression : STRING VARIABLE ASSINGMENT QUOTATION_MARKS VARIABLE QUOTATION_MARKS'
+    variables[t[2]] = str(t[5])
+
+def p_expression_char(t):
+    'expression : CHAR VARIABLE ASSINGMENT SINGLE_QUOTATION_MARK VARIABLE SINGLE_QUOTATION_MARK'
+    variables[t[2]] = t[5]
+
 def p_expression_digit(t):
     'expression : DIGIT'
+    t[0] = t[1]
+
+def p_expression_real(t):
+    'expression : REAL'
     t[0] = t[1]
 
 def p_expression_variable(t):
@@ -58,4 +85,4 @@ def p_error(t):
 parser = yacc.yacc()
 
 def result_parser(line):
-    print(parser.parse(line))
+    parser.parse(line)

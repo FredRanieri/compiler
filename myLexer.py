@@ -5,12 +5,13 @@ from ply import *
 reserved_words = {
     # Tipos de variaveis
     'int' : 'INT',
-    'float': 'FLOAT',
-    'char': 'CHAR',
+    'float' : 'FLOAT',
+    'char' : 'CHAR',
+    'string' : 'STRING',
 
     # Comandos de entrada e saida
-    'scan': 'SCAN',
-    'print': 'PRINT',
+    'scan' : 'SCAN',
+    'print' : 'PRINT',
 
     # Comandos condicionais
     'if': 'IF',
@@ -67,9 +68,10 @@ tokens = [
 
     # Numeros e letras
     'DIGIT',
+    'REAL',
     'VARIABLE',
     'CHARACTER',
-    'STRING',
+    'WORD',
     'EMPTY'
 ] + list(reserved_words.values())
 
@@ -94,8 +96,8 @@ t_DIVISION               =   r"/"
 # Simbolos especiais
 t_OPEN_PARENTHESIS       =   r"\("
 t_CLOSE_PARENTHESIS      =   r"\)"
-t_SINGLE_QUOTATION_MARK  =   r"’"
-t_QUOTATION_MARKS        =   r"”"
+t_SINGLE_QUOTATION_MARK  =   r"\'"
+t_QUOTATION_MARKS        =   r"\”"
 t_PERIOD                 =   r"\."
 t_COMMA                  =   r","
 t_COLON                  =   r":"
@@ -107,6 +109,11 @@ t_CLOSE_SQUARE_BRACKETS  =   r"\]"
 t_OPEN_CURLY_BRACKETS    =   r"\{"
 t_CLOSE_CURLY_BRACKETS   =   r"\}"
 
+
+def t_REAL(t):
+    r'\d+[eE][-+]?\d+|(\.\d+|\d+\.\d+)([eE][-+]?\d+)?'
+    t.value = float(t.value)
+    return t
 
 def t_DIGIT(t):
     r'\d+'
@@ -124,15 +131,18 @@ def t_VARIABLE(t):
     return t
 
 def t_IGNORE(t):
-    r'[ \n\t]'
+    r'[ \n\t\"\']'
 
-def t_STRING(t):
+'''
+def t_WORD(t):
     r'["][a-z A-Z_0-9]*["]'
     return t
 
 def t_CHARACTER(t):
     r'[\'][a-zA-Z_][\']'
     return t
+
+'''
 
 def t_newline(t):
     r'\n+'
@@ -153,5 +163,6 @@ def create_token_table(lines):
             if not token:
                 break
             token_table.append(token)
+            print(token)
 
     return token_table

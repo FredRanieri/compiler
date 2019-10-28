@@ -1,4 +1,8 @@
-func(int b, float c) {
-    int resp = b + c;
-    return resp;
-}
+int i = 10;
+float f = 2.0;
+string s = "haha";
+char c = 'c';
+print(i);
+print(f);
+print(s);
+print(c);
