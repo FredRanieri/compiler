@@ -15,6 +15,6 @@ pip3 install ply
 
 ### Compilar um programa em qmn
 
-```python3
-python3 compiler.py main.qmn
+```shell
+./qmn main.qmn
 ```
