@@ -15,7 +15,7 @@ variables = { }
 ### Atribui o resultado de uma expressão na variavel
 
 def p_statement_assign(t):
-    'statement : VARIABLE ASSINGMENT expression'
+    'statement : VARIABLE ASSINGMENT expression SEMICOLON'
     variables[t[1]] = t[3]
 
 def p_statement_expr(t):
@@ -44,11 +44,11 @@ def p_expression_group(t):
 ### Define expressao de entrada e saida
 
 def p_expression_scan(t):
-    'expression : SCAN OPEN_PARENTHESIS VARIABLE CLOSE_PARENTHESIS'
+    'expression : SCAN OPEN_PARENTHESIS VARIABLE CLOSE_PARENTHESIS SEMICOLON'
     variables[t[3]] = input()
 
 def p_expression_print(t):
-    'expression : PRINT OPEN_PARENTHESIS expression CLOSE_PARENTHESIS'
+    'expression : PRINT OPEN_PARENTHESIS expression CLOSE_PARENTHESIS SEMICOLON'
     print(t[3])
 
 
@@ -90,34 +90,24 @@ def p_expression_variable(t):
 
 ### Define expressao de operadores relacionais
 
-def p_expression_greater(t):
-    'expression : expression GREATER expression'
-    t[0] = (t[1] > t[3])
-
-def p_expression_greater_equal(t):
-    'expression : expression GREATEROREQUAL expression'
-    t[0] = (t[1] >= t[3])
-
-def p_expression_less(t):
-    'expression : expression LESS expression'
-    t[0] = (t[1] < t[3])
-
-def p_expression_less_equal(t):
-    'expression : expression LESSOREQUAL expression'
-    t[0] = (t[1] <= t[3])
-
-def p_expression_equal(t):
-    'expression : expression EQUAL expression'
-    t[0] = (t[1] == t[3])   
-
-def p_expression_different(t):
-    'expression : expression DIFFERENT expression'
-    t[0] = (t[1] != t[3])  
+def p_expression_condicional(t):
+    '''expression : expression GREATER expression
+                  | expression GREATEROREQUAL expression
+                  | expression LESS expression
+                  | expression LESSOREQUAL expression
+                  | expression EQUAL expression
+                  | expression DIFFERENT expression'''
+    if t[2] == '>'  : t[0] = (t[1] > t[3])
+    elif t[2] == '>=': t[0] = (t[1] >= t[3])
+    elif t[2] == '<': t[0] = (t[1] < t[3])
+    elif t[2] == '<=': t[0] = (t[1] <= t[3])
+    elif t[2] == '==': t[0] = (t[1] == t[3])
+    elif t[2] == '!=': t[0] = (t[1] != t[3])
 
 ### Define expressao de erro
 
 def p_error(t):
-    print("Syntax error at '%s'" % t.value)
+    print("Syntax error at {}".format(t))
 
 parser = yacc.yacc()
 
