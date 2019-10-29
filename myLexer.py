@@ -49,6 +49,7 @@ tokens = [
     'SUBTRACTION',
     'MULTIPLICATION',
     'DIVISION',
+    'MOD',
 
     # Simbolos especiais
     'OPEN_PARENTHESIS',
@@ -92,6 +93,7 @@ t_SUM                    =   r"\+"
 t_SUBTRACTION            =   r"-"
 t_MULTIPLICATION         =   r"\*"
 t_DIVISION               =   r"/"
+t_MOD                    =   r"%"
 
 # Simbolos especiais
 t_OPEN_PARENTHESIS       =   r"\("
@@ -108,7 +110,7 @@ t_CLOSE_SQUARE_BRACKETS  =   r"\]"
 # Blocos de comando
 t_OPEN_CURLY_BRACKETS    =   r"\{"
 t_CLOSE_CURLY_BRACKETS   =   r"\}"
-
+# t_CHARACTER              =   r'[\'][a-zA-Z][\']'
 
 def t_REAL(t):
     r'\d+[eE][-+]?\d+|(\.\d+|\d+\.\d+)([eE][-+]?\d+)?'
@@ -124,6 +126,14 @@ def t_DIGIT(t):
         t.value = 0
     return t
 
+# def t_WORD(t):
+#     r'["][a-z A-Z_0-9]*["]'
+#     return t
+
+# def t_CHARACTER(t):
+#     r'[\'][a-zA-Z][\']'
+#     return t
+
 def t_VARIABLE(t):
     r'[a-zA-Z_][a-zA-Z_0-9]*'
     if t.value in reserved_words:
@@ -132,17 +142,6 @@ def t_VARIABLE(t):
 
 def t_IGNORE(t):
     r'[ \n\t\"\']'
-
-'''
-def t_WORD(t):
-    r'["][a-z A-Z_0-9]*["]'
-    return t
-
-def t_CHARACTER(t):
-    r'[\'][a-zA-Z_][\']'
-    return t
-
-'''
 
 def t_newline(t):
     r'\n+'

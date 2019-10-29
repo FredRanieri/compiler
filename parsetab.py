@@ -6,9 +6,9 @@ _tabversion = '3.10'
 
 _lr_method = 'LALR'
 
-_lr_signature = 'leftSUMSUBTRACTIONleftMULTIPLICATIONDIVISIONAND ASSINGMENT CHAR CHARACTER CLOSE_CURLY_BRACKETS CLOSE_PARENTHESIS CLOSE_SQUARE_BRACKETS COLON COMMA DIFFERENT DIGIT DIVISION ELIF ELSE EMPTY EQUAL FLOAT FOR FUNC GREATER GREATEROREQUAL IF INT LESS LESSOREQUAL MULTIPLICATION NOT OPEN_CURLY_BRACKETS OPEN_PARENTHESIS OPEN_SQUARE_BRACKETS OR PERIOD PRINT QUOTATION_MARKS REAL RETURN SCAN SEMICOLON SINGLE_QUOTATION_MARK STRING SUBTRACTION SUM VARIABLE WHILE WORDstatement : VARIABLE ASSINGMENT expressionstatement : expressionexpression : expression SUM expression\n                  | expression SUBTRACTION expression\n                  | expression MULTIPLICATION expression\n                  | expression DIVISION expressionexpression : OPEN_PARENTHESIS expression CLOSE_PARENTHESISexpression : SCAN OPEN_PARENTHESIS VARIABLE CLOSE_PARENTHESISexpression : PRINT OPEN_PARENTHESIS VARIABLE CLOSE_PARENTHESISexpression : INT VARIABLE ASSINGMENT DIGITexpression : FLOAT VARIABLE ASSINGMENT REALexpression : STRING VARIABLE ASSINGMENT QUOTATION_MARKS VARIABLE QUOTATION_MARKSexpression : CHAR VARIABLE ASSINGMENT SINGLE_QUOTATION_MARK VARIABLE SINGLE_QUOTATION_MARKexpression : DIGITexpression : REALexpression : VARIABLE'
+_lr_signature = 'leftSUMSUBTRACTIONleftMULTIPLICATIONDIVISIONnonassocGREATERGREATEROREQUALLESSLESSOREQUALEQUALDIFFERENTAND ASSINGMENT CHAR CHARACTER CLOSE_CURLY_BRACKETS CLOSE_PARENTHESIS CLOSE_SQUARE_BRACKETS COLON COMMA DIFFERENT DIGIT DIVISION ELIF ELSE EMPTY EQUAL FLOAT FOR FUNC GREATER GREATEROREQUAL IF INT LESS LESSOREQUAL MOD MULTIPLICATION NOT OPEN_CURLY_BRACKETS OPEN_PARENTHESIS OPEN_SQUARE_BRACKETS OR PERIOD PRINT QUOTATION_MARKS REAL RETURN SCAN SEMICOLON SINGLE_QUOTATION_MARK STRING SUBTRACTION SUM VARIABLE WHILE WORDblock : statement\n             | statement blockstatement : print SEMICOLON\n                 | assigment SEMICOLON\n                 | scan SEMICOLON\n                 | if_statementvariable_name : VARIABLEvariable_declaration : INT variable_name\n                            | FLOAT variable_name\n                            | CHAR variable_name\n                            | STRING variable_nameassigment : variable_declaration ASSINGMENT expression\n                 | variable_name ASSINGMENT expressionprint : PRINT OPEN_PARENTHESIS expression CLOSE_PARENTHESISexpression : OPEN_PARENTHESIS expression CLOSE_PARENTHESISexpression : valueexpression : variable_namevalue : DIGITvalue : REALscan : SCAN OPEN_PARENTHESIS VARIABLE CLOSE_PARENTHESISexpression : expression GREATER expressionexpression : expression GREATEROREQUAL expressionexpression : expression LESS expressionexpression : expression LESSOREQUAL expressionexpression : expression EQUAL expressionexpression : expression DIFFERENT expressionexpression : NOT expressionexpression : expression OR expressionexpression : expression AND expressionexpression : expression SUM expression\n                  | expression SUBTRACTION expression\n                  | expression MULTIPLICATION expression\n                  | expression DIVISION expression\n                  | expression MOD expressionif_statement : IF OPEN_PARENTHESIS expression CLOSE_PARENTHESIS OPEN_CURLY_BRACKETS block CLOSE_CURLY_BRACKETS'
     
-_lr_action_items = {'VARIABLE':([0,4,7,9,11,12,13,14,15,16,17,20,21,42,43,],[2,19,22,23,24,25,19,19,19,19,19,32,33,44,45,]),'OPEN_PARENTHESIS':([0,4,5,6,13,14,15,16,17,],[4,4,20,21,4,4,4,4,4,]),'SCAN':([0,4,13,14,15,16,17,],[5,5,5,5,5,5,5,]),'PRINT':([0,4,13,14,15,16,17,],[6,6,6,6,6,6,6,]),'INT':([0,4,13,14,15,16,17,],[7,7,7,7,7,7,7,]),'FLOAT':([0,4,13,14,15,16,17,],[9,9,9,9,9,9,9,]),'STRING':([0,4,13,14,15,16,17,],[11,11,11,11,11,11,11,]),'CHAR':([0,4,13,14,15,16,17,],[12,12,12,12,12,12,12,]),'DIGIT':([0,4,13,14,15,16,17,34,],[8,8,8,8,8,8,8,40,]),'REAL':([0,4,13,14,15,16,17,35,],[10,10,10,10,10,10,10,41,]),'$end':([1,2,3,8,10,19,26,27,28,29,30,31,38,39,40,41,46,47,],[0,-16,-2,-14,-15,-16,-1,-3,-4,-5,-6,-7,-8,-9,-10,-11,-12,-13,]),'ASSINGMENT':([2,22,23,24,25,],[13,34,35,36,37,]),'SUM':([2,3,8,10,18,19,26,27,28,29,30,31,38,39,40,41,46,47,],[-16,14,-14,-15,14,-16,14,-3,-4,-5,-6,-7,-8,-9,-10,-11,-12,-13,]),'SUBTRACTION':([2,3,8,10,18,19,26,27,28,29,30,31,38,39,40,41,46,47,],[-16,15,-14,-15,15,-16,15,-3,-4,-5,-6,-7,-8,-9,-10,-11,-12,-13,]),'MULTIPLICATION':([2,3,8,10,18,19,26,27,28,29,30,31,38,39,40,41,46,47,],[-16,16,-14,-15,16,-16,16,16,16,-5,-6,-7,-8,-9,-10,-11,-12,-13,]),'DIVISION':([2,3,8,10,18,19,26,27,28,29,30,31,38,39,40,41,46,47,],[-16,17,-14,-15,17,-16,17,17,17,-5,-6,-7,-8,-9,-10,-11,-12,-13,]),'CLOSE_PARENTHESIS':([8,10,18,19,27,28,29,30,31,32,33,38,39,40,41,46,47,],[-14,-15,31,-16,-3,-4,-5,-6,-7,38,39,-8,-9,-10,-11,-12,-13,]),'QUOTATION_MARKS':([36,44,],[42,46,]),'SINGLE_QUOTATION_MARK':([37,45,],[43,47,]),}
+_lr_action_items = {'PRINT':([0,2,6,18,19,20,73,75,],[7,7,-6,-3,-4,-5,7,-35,]),'SCAN':([0,2,6,18,19,20,73,75,],[10,10,-6,-3,-4,-5,10,-35,]),'IF':([0,2,6,18,19,20,73,75,],[12,12,-6,-3,-4,-5,12,-35,]),'INT':([0,2,6,18,19,20,73,75,],[13,13,-6,-3,-4,-5,13,-35,]),'FLOAT':([0,2,6,18,19,20,73,75,],[14,14,-6,-3,-4,-5,14,-35,]),'CHAR':([0,2,6,18,19,20,73,75,],[15,15,-6,-3,-4,-5,15,-35,]),'STRING':([0,2,6,18,19,20,73,75,],[16,16,-6,-3,-4,-5,16,-35,]),'VARIABLE':([0,2,6,13,14,15,16,18,19,20,21,22,23,24,25,30,34,43,44,45,46,47,48,49,50,51,52,53,54,55,73,75,],[11,11,-6,11,11,11,11,-3,-4,-5,11,11,11,39,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,-35,]),'$end':([1,2,6,17,18,19,20,75,],[0,-1,-6,-2,-3,-4,-5,-35,]),'CLOSE_CURLY_BRACKETS':([2,6,17,18,19,20,74,75,],[-1,-6,-2,-3,-4,-5,75,-35,]),'SEMICOLON':([3,4,5,11,32,33,35,36,37,38,42,56,57,59,60,61,62,63,64,65,66,67,68,69,70,71,72,],[18,19,20,-7,-16,-17,-18,-19,-12,-13,-14,-27,-20,-15,-21,-22,-23,-24,-25,-26,-28,-29,-30,-31,-32,-33,-34,]),'OPEN_PARENTHESIS':([7,10,12,21,22,23,25,30,34,43,44,45,46,47,48,49,50,51,52,53,54,55,],[21,24,25,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,]),'ASSINGMENT':([8,9,11,26,27,28,29,],[22,23,-7,-8,-9,-10,-11,]),'CLOSE_PARENTHESIS':([11,31,32,33,35,36,39,40,41,56,59,60,61,62,63,64,65,66,67,68,69,70,71,72,],[-7,42,-16,-17,-18,-19,57,58,59,-27,-15,-21,-22,-23,-24,-25,-26,-28,-29,-30,-31,-32,-33,-34,]),'GREATER':([11,31,32,33,35,36,37,38,40,41,56,59,60,61,62,63,64,65,66,67,68,69,70,71,72,],[-7,43,-16,-17,-18,-19,43,43,43,43,43,-15,None,None,None,None,None,None,43,43,43,43,43,43,43,]),'GREATEROREQUAL':([11,31,32,33,35,36,37,38,40,41,56,59,60,61,62,63,64,65,66,67,68,69,70,71,72,],[-7,44,-16,-17,-18,-19,44,44,44,44,44,-15,None,None,None,None,None,None,44,44,44,44,44,44,44,]),'LESS':([11,31,32,33,35,36,37,38,40,41,56,59,60,61,62,63,64,65,66,67,68,69,70,71,72,],[-7,45,-16,-17,-18,-19,45,45,45,45,45,-15,None,None,None,None,None,None,45,45,45,45,45,45,45,]),'LESSOREQUAL':([11,31,32,33,35,36,37,38,40,41,56,59,60,61,62,63,64,65,66,67,68,69,70,71,72,],[-7,46,-16,-17,-18,-19,46,46,46,46,46,-15,None,None,None,None,None,None,46,46,46,46,46,46,46,]),'EQUAL':([11,31,32,33,35,36,37,38,40,41,56,59,60,61,62,63,64,65,66,67,68,69,70,71,72,],[-7,47,-16,-17,-18,-19,47,47,47,47,47,-15,None,None,None,None,None,None,47,47,47,47,47,47,47,]),'DIFFERENT':([11,31,32,33,35,36,37,38,40,41,56,59,60,61,62,63,64,65,66,67,68,69,70,71,72,],[-7,48,-16,-17,-18,-19,48,48,48,48,48,-15,None,None,None,None,None,None,48,48,48,48,48,48,48,]),'OR':([11,31,32,33,35,36,37,38,40,41,56,59,60,61,62,63,64,65,66,67,68,69,70,71,72,],[-7,49,-16,-17,-18,-19,49,49,49,49,49,-15,-21,-22,-23,-24,-25,-26,49,49,-30,-31,-32,-33,49,]),'AND':([11,31,32,33,35,36,37,38,40,41,56,59,60,61,62,63,64,65,66,67,68,69,70,71,72,],[-7,50,-16,-17,-18,-19,50,50,50,50,50,-15,-21,-22,-23,-24,-25,-26,50,50,-30,-31,-32,-33,50,]),'SUM':([11,31,32,33,35,36,37,38,40,41,56,59,60,61,62,63,64,65,66,67,68,69,70,71,72,],[-7,51,-16,-17,-18,-19,51,51,51,51,51,-15,-21,-22,-23,-24,-25,-26,51,51,-30,-31,-32,-33,51,]),'SUBTRACTION':([11,31,32,33,35,36,37,38,40,41,56,59,60,61,62,63,64,65,66,67,68,69,70,71,72,],[-7,52,-16,-17,-18,-19,52,52,52,52,52,-15,-21,-22,-23,-24,-25,-26,52,52,-30,-31,-32,-33,52,]),'MULTIPLICATION':([11,31,32,33,35,36,37,38,40,41,56,59,60,61,62,63,64,65,66,67,68,69,70,71,72,],[-7,53,-16,-17,-18,-19,53,53,53,53,53,-15,-21,-22,-23,-24,-25,-26,53,53,53,53,-32,-33,53,]),'DIVISION':([11,31,32,33,35,36,37,38,40,41,56,59,60,61,62,63,64,65,66,67,68,69,70,71,72,],[-7,54,-16,-17,-18,-19,54,54,54,54,54,-15,-21,-22,-23,-24,-25,-26,54,54,54,54,-32,-33,54,]),'MOD':([11,31,32,33,35,36,37,38,40,41,56,59,60,61,62,63,64,65,66,67,68,69,70,71,72,],[-7,55,-16,-17,-18,-19,55,55,55,55,55,-15,-21,-22,-23,-24,-25,-26,55,55,-30,-31,-32,-33,55,]),'NOT':([21,22,23,25,30,34,43,44,45,46,47,48,49,50,51,52,53,54,55,],[34,34,34,34,34,34,34,34,34,34,34,34,34,34,34,34,34,34,34,]),'DIGIT':([21,22,23,25,30,34,43,44,45,46,47,48,49,50,51,52,53,54,55,],[35,35,35,35,35,35,35,35,35,35,35,35,35,35,35,35,35,35,35,]),'REAL':([21,22,23,25,30,34,43,44,45,46,47,48,49,50,51,52,53,54,55,],[36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,]),'OPEN_CURLY_BRACKETS':([58,],[73,]),}
 
 _lr_action = {}
 for _k, _v in _lr_action_items.items():
@@ -17,7 +17,7 @@ for _k, _v in _lr_action_items.items():
       _lr_action[_x][_k] = _y
 del _lr_action_items
 
-_lr_goto_items = {'statement':([0,],[1,]),'expression':([0,4,13,14,15,16,17,],[3,18,26,27,28,29,30,]),}
+_lr_goto_items = {'block':([0,2,73,],[1,17,74,]),'statement':([0,2,73,],[2,2,2,]),'print':([0,2,73,],[3,3,3,]),'assigment':([0,2,73,],[4,4,4,]),'scan':([0,2,73,],[5,5,5,]),'if_statement':([0,2,73,],[6,6,6,]),'variable_declaration':([0,2,73,],[8,8,8,]),'variable_name':([0,2,13,14,15,16,21,22,23,25,30,34,43,44,45,46,47,48,49,50,51,52,53,54,55,73,],[9,9,26,27,28,29,33,33,33,33,33,33,33,33,33,33,33,33,33,33,33,33,33,33,33,9,]),'expression':([21,22,23,25,30,34,43,44,45,46,47,48,49,50,51,52,53,54,55,],[31,37,38,40,41,56,60,61,62,63,64,65,66,67,68,69,70,71,72,]),'value':([21,22,23,25,30,34,43,44,45,46,47,48,49,50,51,52,53,54,55,],[32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,]),}
 
 _lr_goto = {}
 for _k, _v in _lr_goto_items.items():
@@ -26,21 +26,40 @@ for _k, _v in _lr_goto_items.items():
        _lr_goto[_x][_k] = _y
 del _lr_goto_items
 _lr_productions = [
-  ("S' -> statement","S'",1,None,None,None),
-  ('statement -> VARIABLE ASSINGMENT expression','statement',3,'p_statement_assign','myGrammar.py',16),
-  ('statement -> expression','statement',1,'p_statement_expr','myGrammar.py',20),
-  ('expression -> expression SUM expression','expression',3,'p_expression_binop','myGrammar.py',23),
-  ('expression -> expression SUBTRACTION expression','expression',3,'p_expression_binop','myGrammar.py',24),
-  ('expression -> expression MULTIPLICATION expression','expression',3,'p_expression_binop','myGrammar.py',25),
-  ('expression -> expression DIVISION expression','expression',3,'p_expression_binop','myGrammar.py',26),
-  ('expression -> OPEN_PARENTHESIS expression CLOSE_PARENTHESIS','expression',3,'p_expression_group','myGrammar.py',39),
-  ('expression -> SCAN OPEN_PARENTHESIS VARIABLE CLOSE_PARENTHESIS','expression',4,'p_expression_scan','myGrammar.py',43),
-  ('expression -> PRINT OPEN_PARENTHESIS VARIABLE CLOSE_PARENTHESIS','expression',4,'p_expression_print','myGrammar.py',47),
-  ('expression -> INT VARIABLE ASSINGMENT DIGIT','expression',4,'p_expression_int','myGrammar.py',51),
-  ('expression -> FLOAT VARIABLE ASSINGMENT REAL','expression',4,'p_expression_float','myGrammar.py',55),
-  ('expression -> STRING VARIABLE ASSINGMENT QUOTATION_MARKS VARIABLE QUOTATION_MARKS','expression',6,'p_expression_string','myGrammar.py',59),
-  ('expression -> CHAR VARIABLE ASSINGMENT SINGLE_QUOTATION_MARK VARIABLE SINGLE_QUOTATION_MARK','expression',6,'p_expression_char','myGrammar.py',63),
-  ('expression -> DIGIT','expression',1,'p_expression_digit','myGrammar.py',67),
-  ('expression -> REAL','expression',1,'p_expression_real','myGrammar.py',71),
-  ('expression -> VARIABLE','expression',1,'p_expression_variable','myGrammar.py',75),
+  ("S' -> block","S'",1,None,None,None),
+  ('block -> statement','block',1,'p_block','myGrammar.py',19),
+  ('block -> statement block','block',2,'p_block','myGrammar.py',20),
+  ('statement -> print SEMICOLON','statement',2,'p_statement','myGrammar.py',23),
+  ('statement -> assigment SEMICOLON','statement',2,'p_statement','myGrammar.py',24),
+  ('statement -> scan SEMICOLON','statement',2,'p_statement','myGrammar.py',25),
+  ('statement -> if_statement','statement',1,'p_statement','myGrammar.py',26),
+  ('variable_name -> VARIABLE','variable_name',1,'p_variable_name','myGrammar.py',30),
+  ('variable_declaration -> INT variable_name','variable_declaration',2,'p_variable_declaration','myGrammar.py',34),
+  ('variable_declaration -> FLOAT variable_name','variable_declaration',2,'p_variable_declaration','myGrammar.py',35),
+  ('variable_declaration -> CHAR variable_name','variable_declaration',2,'p_variable_declaration','myGrammar.py',36),
+  ('variable_declaration -> STRING variable_name','variable_declaration',2,'p_variable_declaration','myGrammar.py',37),
+  ('assigment -> variable_declaration ASSINGMENT expression','assigment',3,'p_assigment','myGrammar.py',41),
+  ('assigment -> variable_name ASSINGMENT expression','assigment',3,'p_assigment','myGrammar.py',42),
+  ('print -> PRINT OPEN_PARENTHESIS expression CLOSE_PARENTHESIS','print',4,'p_print','myGrammar.py',50),
+  ('expression -> OPEN_PARENTHESIS expression CLOSE_PARENTHESIS','expression',3,'p_expression','myGrammar.py',54),
+  ('expression -> value','expression',1,'p_expression_value','myGrammar.py',58),
+  ('expression -> variable_name','expression',1,'p_expression_variable','myGrammar.py',63),
+  ('value -> DIGIT','value',1,'p_value_int','myGrammar.py',67),
+  ('value -> REAL','value',1,'p_value_float','myGrammar.py',72),
+  ('scan -> SCAN OPEN_PARENTHESIS VARIABLE CLOSE_PARENTHESIS','scan',4,'p_expression_scan','myGrammar.py',76),
+  ('expression -> expression GREATER expression','expression',3,'p_expression_greater','myGrammar.py',80),
+  ('expression -> expression GREATEROREQUAL expression','expression',3,'p_expression_greater_equal','myGrammar.py',84),
+  ('expression -> expression LESS expression','expression',3,'p_expression_less','myGrammar.py',88),
+  ('expression -> expression LESSOREQUAL expression','expression',3,'p_expression_less_equal','myGrammar.py',92),
+  ('expression -> expression EQUAL expression','expression',3,'p_expression_equal','myGrammar.py',96),
+  ('expression -> expression DIFFERENT expression','expression',3,'p_expression_different','myGrammar.py',100),
+  ('expression -> NOT expression','expression',2,'p_expression_not','myGrammar.py',104),
+  ('expression -> expression OR expression','expression',3,'p_expression_or','myGrammar.py',108),
+  ('expression -> expression AND expression','expression',3,'p_expression_and','myGrammar.py',112),
+  ('expression -> expression SUM expression','expression',3,'p_expression_binop','myGrammar.py',116),
+  ('expression -> expression SUBTRACTION expression','expression',3,'p_expression_binop','myGrammar.py',117),
+  ('expression -> expression MULTIPLICATION expression','expression',3,'p_expression_binop','myGrammar.py',118),
+  ('expression -> expression DIVISION expression','expression',3,'p_expression_binop','myGrammar.py',119),
+  ('expression -> expression MOD expression','expression',3,'p_expression_binop','myGrammar.py',120),
+  ('if_statement -> IF OPEN_PARENTHESIS expression CLOSE_PARENTHESIS OPEN_CURLY_BRACKETS block CLOSE_CURLY_BRACKETS','if_statement',7,'p_if_statement','myGrammar.py',129),
 ]

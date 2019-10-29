@@ -1,13 +1,20 @@
-int i = 10;
-float f = 2.0;
-string s = "haha";
-char c = 'c';
-char j = 'j';
+int i = 10 + 5;
 print(i);
-print(f);
-print(s);
-print(c);
-string s1 = "haha";
-print(s == "haha");
-print(c == j);
-print(c <= j);
+i = i - 5;
+print(i);
+i = i*i/2;
+print(i);
+i = (10 + 2/2) * 5;
+print(i);
+print(10 == 10);
+print(10 == 5);
+print(10 < 10);
+print(10 <= 10);
+print(10 > 10);
+print(10 >= 10);
+print(10 != 10);
+print(10%7);
+print((10 == 10) and i == 55);
+if(10 == 10) {
+    print(123);
+}
