@@ -18,9 +18,7 @@ def main():
         lines = file.readlines()
         token_table = myLexer.create_token_table(lines)
 
-        for line in ''.join(lines).split(';'):
-            if len(line) != 0:
-                myGrammar.result_parser(line)
+        myGrammar.result_parser(''.join(lines))
 
 if __name__ == "__main__":
     main()
